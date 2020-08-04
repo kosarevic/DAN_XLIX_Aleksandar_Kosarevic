@@ -7,33 +7,10 @@
         xmlns:local="clr-namespace:Zadatak_1"
         mc:Ignorable="d"
         Title="ModifyManagerWindow" Height="450" Width="800">
-    <StackPanel Orientation="Vertical" Margin="0,0,33,-10">
-        <TextBlock TextAlignment="Center" Text="Managers and Employees" Foreground="#282828" Margin="150,20,155,20" HorizontalAlignment="Center" FontSize="25" Width="323" RenderTransformOrigin="0.242,0.685"/>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Add Employee" Margin="10,0,697,0" Width="87" Click="Add_Employe"/>
-            <Button Content="Add Manager" Margin="-690,0,697,0" Width="87" Click="Add_Manager"/>
-        </StackPanel>
-        <DataGrid x:Name="datagrid" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" CanUserAddRows="False"
-Height="288" Width="749" Margin="10,5,0,5" HorizontalAlignment="Center" SelectedItem="{Binding Employe, UpdateSourceTrigger=PropertyChanged}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Full name" IsReadOnly="True">
-                    <DataGridTextColumn.Binding>
-                        <MultiBinding StringFormat="{}{0} {1}">
-                            <Binding Path="FirstName" />
-                            <Binding Path="LastName" />
-                        </MultiBinding>
-                    </DataGridTextColumn.Binding>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" IsReadOnly="True" />
-                <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG, StringFormat=dd/MM/yyyy}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Account" Binding="{Binding Account}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Username" Binding="{Binding Username}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Password" Binding="{Binding Password}" IsReadOnly="True"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Content="Logout" Margin="10,0,659,0" Click="Logout"/>
-    </StackPanel>
+    <Grid>
+        <TextBlock TextAlignment="Center" Text="Create Personnel" Foreground="#282828" Margin="298,20,302,360" HorizontalAlignment="Center" FontSize="25" Width="192"/>
+        <Button Content="Create Employe" HorizontalAlignment="Left" Margin="273,190,0,0" VerticalAlignment="Top" Width="100" Click="Add_Employe"/>
+        <Button Content="Create Manager" HorizontalAlignment="Left" Margin="415,190,0,0" VerticalAlignment="Top" Width="100" Click="Add_Manager"/>
+        <Button Content="Logout" HorizontalAlignment="Left" Margin="357,307,0,0" VerticalAlignment="Top" Width="75" Click="Logout"/>
+    </Grid>
 </Window>

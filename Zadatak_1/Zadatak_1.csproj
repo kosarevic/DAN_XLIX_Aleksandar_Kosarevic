@@ -60,6 +60,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\OwnerWindowModel.cs" />
     <Compile Include="ViewModel\OwnerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

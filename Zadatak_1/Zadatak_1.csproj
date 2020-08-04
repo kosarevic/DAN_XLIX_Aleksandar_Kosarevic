@@ -56,11 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEmployeWindow.xaml.cs">
+      <DependentUpon>AddEmployeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddManagerWindow.xaml.cs">
+      <DependentUpon>AddManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\OwnerWindowModel.cs" />
     <Compile Include="ViewModel\OwnerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,11 +104,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Validations\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\OwnerCredentials.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddEmployeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

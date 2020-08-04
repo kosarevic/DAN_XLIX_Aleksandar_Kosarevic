@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,30 +34,32 @@ namespace Zadatak_1
             SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
             try
             {
-                //User is extracted from the database matching inserted paramaters Username and Password.
-                SqlCommand query = new SqlCommand("SELECT * FROM tblUser WHERE Username=@Username", sqlCon);
-                query.CommandType = CommandType.Text;
-                query.Parameters.AddWithValue("@Username", txtUsername.Text);
-                sqlCon.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                User user = new User();
+                List<string> text = new List<string>();
+                Owner owner = new Owner();
 
-                foreach (DataRow row in dataTable.Rows)
+                StreamReader sr = new StreamReader(@"..\\..\Files\OwnerCredentials.txt");
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    user = new User
-                    {
-
-                    };
+                    text.Add(line);
                 }
-                //If username is as value below, Employe window is engaged.
-                if (user.Username == "Zaposleni" && user.Password == "Zaposleni" && txtPassword.Password == "Zaposleni")
+                sr.Close();
+
+                if (text.Any())
                 {
-                    EmployeWindow dashboard = new EmployeWindow();
-                    dashboard.Show();
+                    foreach (string t in text)
+                    {
+                        string[] temp = t.Split(' ');
+                        owner.Username = temp[1];
+                        owner.Password = temp[3];
+                    }
+                }
+
+                if (txtUsername.Text == owner.Username && txtPassword.Password == owner.Password)
+                {
+                    OwnerWindow window = new OwnerWindow();
+                    window.Show();
                     this.Close();
-                    return;
                 }
             }
             catch (Exception ex)

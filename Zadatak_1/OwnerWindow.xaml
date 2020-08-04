@@ -3,10 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:Zadatak_1"
         mc:Ignorable="d"
-        Title="OwnerWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="ModifyManagerWindow" Height="450" Width="800">
+    <StackPanel Orientation="Vertical" Margin="0,0,33,-10">
+        <TextBlock TextAlignment="Center" Text="Managers and Employees" Foreground="#282828" Margin="150,20,155,20" HorizontalAlignment="Center" FontSize="25" Width="323" RenderTransformOrigin="0.242,0.685"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Add Employee" Margin="10,0,697,0" Width="87" Click="Add_Employe"/>
+            <Button Content="Add Manager" Margin="-690,0,697,0" Width="87" Click="Add_Manager"/>
+        </StackPanel>
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" CanUserAddRows="False"
+Height="288" Width="749" Margin="10,5,0,5" HorizontalAlignment="Center" SelectedItem="{Binding Employe, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Full name" IsReadOnly="True">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="FirstName" />
+                            <Binding Path="LastName" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" IsReadOnly="True" />
+                <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG, StringFormat=dd/MM/yyyy}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Account" Binding="{Binding Account}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Logout" Margin="10,0,659,0" Click="Logout"/>
+    </StackPanel>
 </Window>

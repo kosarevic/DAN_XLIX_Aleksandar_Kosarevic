@@ -23,5 +23,20 @@ namespace Zadatak_1
         {
             InitializeComponent();
         }
+
+        private void Add_Employe(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Manager(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
